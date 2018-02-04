@@ -1,9 +1,9 @@
 version: "3.1"
 
 services:
-  
+
   nginx:
-    image: nginx:alpine
+    image: nginx:1.12-alpine
     ports:
       - "8000:80"
     volumes:
@@ -15,7 +15,7 @@ services:
       - nodejs:nodejs-app
 
   nodejs:
-    image: node:alpine
+    image: node:8.9-alpine
     environment: 
       NODE_ENV: production
     working_dir: /home/app
@@ -27,6 +27,6 @@ services:
     command: ["node", "index"]
 
   php:
-    image: php:apache
+    image: php:7.2-apache
     volumes:
       - ./php:/var/www/html
